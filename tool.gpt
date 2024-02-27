@@ -6,6 +6,4 @@ Args: model: The name of the model to use. Default is "gpt-4-vision-preview".
 Args: prompt: The text prompt based on which the GPT model will generate a response.
 Args: images: Space-delimited list of image URIs to analyze. Valid URI protocols are "http" and "https" for remote images, and "file" for local images. Only supports jpeg and png.
 
-#!/bin/bash
-
-node index.js "${PROMPT}" ${IMAGES}
+#!/usr/bin/env node index.js "${PROMPT}" ${IMAGES}
