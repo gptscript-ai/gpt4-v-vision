@@ -13,7 +13,9 @@
   "dependencies": {
     "commander": "^9.0.0",
     "file-type": "^19.0.0",
-    "openai": "^4.28.0",
-    "whatwg-url": "^14.0.0"
+    "openai": "^4.28.0"
+  },
+  "overrides": {
+    "whatwg-url": "13.0.0"
   }
 }
