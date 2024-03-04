@@ -1,6 +1,5 @@
 import { Command, Option } from 'commander';
 import { fileTypeFromBuffer } from 'file-type';
-import { URL } from 'whatwg-url';
 import fs from 'fs';
 import OpenAI from 'openai';
 
