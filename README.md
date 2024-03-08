@@ -7,7 +7,20 @@
 - NodeJS 
 - OpenAI API key
 
-## Installation
+
+## Usage
+
+Import `vision` into any `.gpt` script by referencing its GitHub repo.
+
+```yaml
+Tools: github.com/gptscript-ai/vision
+
+Describe the images at the following locations:
+- examples/eiffel-tower.png
+- https://avatars.githubusercontent.com/u/158112119?s=400&u=d2c6ae055a80ced8209f4aab2562986a97d79e9f&v=4
+```
+
+## Testing Changes
 
 1. Clone this repository or download the source code:
 
@@ -22,9 +35,28 @@
     npm install 
     ```
 
-## Usage
+3. Import the local `tools.gpt` file to test local changes
 
-### Command help
+  [examples/test.gpt](examples/test.gpt) provides an example
+
+  ```yaml
+  # The tool script import path is relative to the directory of the script importing it; in this case ./examples
+  Tools: ../tool.gpt
+  Description: This script is used to test local changes to the vision tool by invoking it with a simple prompt and image references.
+
+  Describe the images at the following locations:
+  - examples/eiffel-tower.png
+  - https://avatars.githubusercontent.com/u/158112119?s=400&u=d2c6ae055a80ced8209f4aab2562986a97d79e9f&v=4
+  ```
+
+  It can be run from the vision repo's root directory
+
+  ```sh
+  # Disable response caching to ensure the tool is always called for testing purposes
+  gptscript --cache=false examples/test.gpt
+  ```
+
+## Running the CLI
 
 ```console
 $ node index.js --help

@@ -1,0 +1,7 @@
+# Import the local tool file. Must be run from the root of this respository; e.g. `gptscript examples/test.gpt`
+Tools: ../tool.gpt
+Description: This script is used to test local changes to the vision tool by invoking it with a simple prompt and image references.
+
+Describe the images at the following locations:
+- examples/eiffel-tower.png
+- https://avatars.githubusercontent.com/u/158112119?s=400&u=d2c6ae055a80ced8209f4aab2562986a97d79e9f&v=4
