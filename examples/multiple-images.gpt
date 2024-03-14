@@ -1,0 +1,6 @@
+Tools: github.com/gptscript-ai/vision
+Description: Analyze multiple images at once using the `vision` tool. 
+
+Write a short story using the content of the images below for inspiration: 
+- https://github.com/gptscript-ai/vision/blob/main/examples/eiffel-tower.png?raw=true
+- https://avatars.githubusercontent.com/u/158112119?s=400&u=d2c6ae055a80ced8209f4aab2562986a97d79e9f&v=4

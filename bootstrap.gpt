@@ -1,5 +1,0 @@
-Tools: sys.find, sys.read, sys.write
-
-You are a very smart and experienced nodejs developer. You are tasked with bootstrapping the current directory with a nodejs CLI application named "vision" 
-that uses the "command" package to parse command line arguments. The application should have no subcommands. The root command takes one or more file paths or urls as arguments. Be sure to include an example of a single option. A `--help` flag should also be generated.
-Use modern best practices and the latest version of nodejs. Be sure to encapsulate command actions and arg/option validation in separate functions that can be called separately. Ensure there's also configuration and structure for building this into a binary. Use the tools available to you to write the code, directories, and configurations to the current directory.
