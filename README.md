@@ -37,7 +37,7 @@ Describe the images at the following locations:
 
 3. Import the local `tools.gpt` file to test local changes
 
-    [examples/test.gpt](examples/test.gpt) is a simple example of a script that tests local changes
+    Here's a simple example: 
 
     ```yaml
     # The tool script import path is relative to the directory of the script importing it; in this case ./examples
