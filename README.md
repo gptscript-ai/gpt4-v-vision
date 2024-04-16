@@ -20,6 +20,8 @@ Describe the images at the following locations:
 - https://avatars.githubusercontent.com/u/158112119?s=400&u=d2c6ae055a80ced8209f4aab2562986a97d79e9f&v=4
 ```
 
+You will be prompted to enter your OpenAI API key if you have not provided it before.
+
 ## Testing Changes
 
 1. Clone this repository or download the source code:
