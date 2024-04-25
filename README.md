@@ -13,7 +13,7 @@
 Import `vision` into any `.gpt` script by referencing this GitHub repo.
 
 ```yaml
-Tools: github.com/gptscript-ai/vision
+Tools: github.com/gptscript-ai/gpt4-v-vision
 
 Describe the images at the following locations:
 - examples/eiffel-tower.png
@@ -27,8 +27,8 @@ You will be prompted to enter your OpenAI API key if you have not provided it be
 1. Clone this repository or download the source code:
 
     ```bash
-    git clone git@github.com:gptscript-ai/vision.git
-    cd vision 
+    git clone git@github.com:gptscript-ai/gpt4-v-vision.git
+    cd gpt4-v-vision
     ```
 
 2. Install the `npm` dependencies
@@ -55,7 +55,7 @@ You will be prompted to enter your OpenAI API key if you have not provided it be
 
     ```sh
     # Disable response caching to ensure the tool is always called for testing purposes
-    gptscript --cache=false examples/test.gpt
+    gptscript --disable-cache examples/test.gpt
     ```
 
 ## Running the CLI
