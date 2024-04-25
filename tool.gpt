@@ -1,5 +1,5 @@
 Name: vision
-Credential: github.com/gptscript-ai/vision/credential
+Credential: github.com/gptscript-ai/gpt4-v-vision/credential
 Description: Analyze a set of images using a given prompt and vision model.
 Args: detail: (optional) Fidelity to process images at. One of ["high", "low", "auto"]. Default is "auto".
 Args: max-tokens: (optional) The maximum number of tokens. Default is 2048.
