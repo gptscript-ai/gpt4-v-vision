@@ -1,4 +1,4 @@
-Tools: github.com/gptscript-ai/vision
+Tools: github.com/gptscript-ai/gpt4-v-vision
 Description: Analyze multiple images at once using the `vision` tool. 
 
 Write a short story using the content of the images below for inspiration: 
