@@ -29,8 +29,11 @@ async function main() {
 
   program.addOption(new Option('--model <model>', 'Model to process images with')
     .env('MODEL')
-    .choices(['gpt-4-vision-preview'])
-    .default('gpt-4-vision-preview')
+    .choices([
+      'gpt-4o',
+      'gpt-4-turbo'
+    ])
+    .default('gpt-4o')
   );
 
   program.addOption(new Option('--detail <detail>', 'Fidelity to use when processing images')
@@ -90,6 +93,7 @@ async function resolveImageURL(image) {
       if (mime != 'image/jpeg' && mime != 'image/png') {
         throw new Error('Unsupported mimetype')
       }
+
       const base64 = data.toString('base64')
       return `data:${mime};base64,${base64}`
     default:
