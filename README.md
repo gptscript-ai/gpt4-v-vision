@@ -1,6 +1,6 @@
-# vision
+# gpt4-v-vision
 
-`vision` is a simple OpenAI CLI and GPTScript Tool for interacting with vision models.
+`gpt4-v-vision` is a simple OpenAI CLI and GPTScript Tool for interacting with vision models.
 
 ## Prerequisites
 
@@ -75,7 +75,7 @@ Options:
   --openai-base-url <string>  OpenAI base URL (env: OPENAI_BASE_URL)
   --openai-org-id <string>    OpenAI Org ID to use (env: OPENAI_ORG_ID)
   --max-tokens <number>       Max tokens to use (default: 2048, env: MAX_TOKENS)
-  --model <model>             Model to process images with (choices: "gpt-4-vision-preview", default: "gpt-4-vision-preview", env: MODEL)
+  --model <model>             Model to process images with (choices: "gpt-4o", "gpt-4-turbo", default: "gpt-4o", env: MODEL)
   --detail <detail>           Fidelity to use when processing images (choices: "low", "high", "auto", default: "auto", env: DETAIL)
   -h, --help                  display help for command
 ```
