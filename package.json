@@ -11,9 +11,9 @@
   "keywords": [],
   "author": "",
   "dependencies": {
-    "commander": "^9.0.0",
+    "commander": "^12.1.0",
     "file-type": "^19.0.0",
-    "openai": "^4.28.0"
+    "openai": "^4.52.0"
   },
   "overrides": {
     "whatwg-url": "13.0.0"
