@@ -7,19 +7,16 @@ import OpenAI from 'openai';
 async function main() {
   const program = new Command();
 
-  program.description('Utility for processing images with the OpenAI API');
+  program.description('Utility for processing images with the GPTScript Gateway API');
 
-  program.addOption(new Option('--openai-api-key <key>', 'OpenAI API Key')
-    .env('OPENAI_API_KEY')
+  program.addOption(new Option('--gptscript-gateway-api-key <key>', 'Gateway API Key')
+    .env('GPTSCRIPT_GATEWAY_API_KEY')
     .makeOptionMandatory()
   );
 
-  program.addOption(new Option('--openai-base-url <string>', 'OpenAI base URL')
-    .env('OPENAI_BASE_URL')
-  );
-
-  program.addOption(new Option('--openai-org-id <string>', 'OpenAI Org ID to use')
-    .env('OPENAI_ORG_ID')
+  program.addOption(new Option('--gptscript-gateway-url <string>', 'Gateway URL')
+    .env('GPTSCRIPT_GATEWAY_URL')
+    .default("https://gateway-api.gptscript.ai")
   );
 
   program.addOption(new Option('--max-tokens <number>', 'Max tokens to use')
@@ -30,8 +27,7 @@ async function main() {
   program.addOption(new Option('--model <model>', 'Model to process images with')
     .env('MODEL')
     .choices([
-      'gpt-4o',
-      'gpt-4-turbo'
+      'gpt-4o'
     ])
     .default('gpt-4o')
   );
@@ -62,7 +58,7 @@ async function run(prompt, images, opts) {
     })
   }
 
-  const openai = new OpenAI(opts.openaiApiKey, opts.baseUrl, opts.orgId);
+  const openai = new OpenAI({apiKey: opts.gptscriptGatewayApiKey, baseURL: opts.gptscriptGatewayUrl + "/llm"});
   const response = await openai.chat.completions.create({
     model: opts.model,
     max_tokens: opts.maxTokens,
