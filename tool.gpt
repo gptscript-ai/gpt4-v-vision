@@ -7,4 +7,4 @@ Args: model: (optional) The name of the model to use. Default is "gpt-4o".
 Args: prompt: (required) The text prompt based on which the GPT model will generate a response.
 Args: images: (required) Comma-separated list of image URIs to analyze. Valid URIs start with "http://" and "https://" for remote images, and "file://" for paths to local image files. Only supports jpeg and png. Commas in file paths should be escaped with a backslash.
 
-#!/usr/bin/env node ${GPTSCRIPT_TOOL_DIR}/index.js "${PROMPT}"
+#!/usr/bin/env node ${GPTSCRIPT_TOOL_DIR}/index.js
