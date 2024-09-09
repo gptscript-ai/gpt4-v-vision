@@ -1,53 +1,69 @@
-import { Command, Option } from 'commander';
 import { fileTypeFromBuffer } from 'file-type';
 import fs from 'fs';
 import OpenAI from 'openai';
 
-
 async function main() {
-  const program = new Command();
+  let images = []
+  if (process.env.IMAGES) {
+    images = process.env.IMAGES.split(/(?<!\\),/) // this matches all unescaped commas
+    for (let i = 0; i < images.length; i++) {
+      images[i] = images[i].replace(/\\,/g, ',')
+    }
+  }
 
-  program.description('Utility for processing images with the OpenAI API');
+  const prompt = process.env.PROMPT ?? ""
+  if (prompt === "") {
+    console.log("No prompt provided. Please provide a prompt to send to the vision model.")
+    process.exit(1)
+  }
 
-  program.addOption(new Option('--openai-api-key <key>', 'OpenAI API Key')
-    .env('OPENAI_API_KEY')
-    .makeOptionMandatory()
-  );
+  const options = {}
 
-  program.addOption(new Option('--openai-base-url <string>', 'OpenAI base URL')
-    .env('OPENAI_BASE_URL')
-  );
+  if (process.env.OPENAI_API_KEY) {
+    options.openaiApiKey = process
+  }
+  if (process.env.OPENAI_BASE_URL) {
+    options.baseUrl = process.env.OPENAI_BASE_URL
+  }
+  if (process.env.OPENAI_ORG_ID) {
+      options.orgId = process.env.OPENAI_ORG_ID
+  }
 
-  program.addOption(new Option('--openai-org-id <string>', 'OpenAI Org ID to use')
-    .env('OPENAI_ORG_ID')
-  );
+  if (process.env.MAX_TOKENS) {
+    options.maxTokens = parseInt(process.env.MAX_TOKENS)
+  } else {
+    options.maxTokens = 2048
+  }
 
-  program.addOption(new Option('--max-tokens <number>', 'Max tokens to use')
-    .default(2048)
-    .env('MAX_TOKENS')
-  );
+  if (process.env.MODEL) {
+    if (process.env.MODEL === 'gpt-4-turbo') {
+      options.model = 'gpt-4-turbo'
+    } else if (process.env.MODEL === 'gpt-4o') {
+      options.model = 'gpt-4o'
+    } else {
+        console.log("Invalid model provided. Please provide a valid model.")
+        process.exit(1)
+    }
+  } else {
+    options.model = 'gpt-4o'
+  }
 
-  program.addOption(new Option('--model <model>', 'Model to process images with')
-    .env('MODEL')
-    .choices([
-      'gpt-4o',
-      'gpt-4-turbo'
-    ])
-    .default('gpt-4o')
-  );
+  if (process.env.DETAIL) {
+    if (process.env.DETAIL === 'low') {
+      options.detail = 'low'
+    } else if (process.env.DETAIL === 'high') {
+      options.detail = 'high'
+    } else if (process.env.DETAIL === 'auto') {
+      options.detail = 'auto'
+    } else {
+        console.log("Invalid detail provided. Please provide a valid detail.")
+        process.exit(1)
+    }
+  } else {
+    options.detail = 'auto'
+  }
 
-  program.addOption(new Option('--detail <detail>', 'Fidelity to use when processing images')
-    .env('DETAIL')
-    .choices(['low', 'high', 'auto'])
-    .default('auto')
-  );
-
-  program.argument('<prompt>', 'Prompt to send to the vision model');
-
-  program.argument('<images...>', 'List of image URIs to process. Supports file:// and https:// protocols. Images must be jpeg or png.');
-
-  program.action(run);
-  await program.parseAsync();
+  await run(prompt, images, options)
 }
 
 async function run(prompt, images, opts) {
@@ -90,7 +106,7 @@ async function resolveImageURL(image) {
       const filePath = image.slice(7)
       const data = fs.readFileSync(filePath)
       const mime = (await fileTypeFromBuffer(data)).mime
-      if (mime != 'image/jpeg' && mime != 'image/png') {
+      if (mime !== 'image/jpeg' && mime !== 'image/png') {
         throw new Error('Unsupported mimetype')
       }
 
@@ -101,7 +117,4 @@ async function resolveImageURL(image) {
   }
 }
 
-main();
-
-
-
+await main();
