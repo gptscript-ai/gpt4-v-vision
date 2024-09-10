@@ -9,7 +9,9 @@ async function main() {
     for (let i = 0; i < images.length; i++) {
       images[i] = images[i].replace(/\\,/g, ',')
     }
-  } else {
+  }
+
+  if (images.length === 0) {
     console.log("No images provided. Please provide a list of images to send to the vision model.")
     process.exit(1)
   }
