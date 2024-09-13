@@ -25,7 +25,7 @@ async function main() {
     const options = {}
 
     if (process.env.OPENAI_API_KEY) {
-        options.openaiApiKey = process
+        options.openaiApiKey = process.env.OPENAI_API_KEY
     }
     if (process.env.OPENAI_BASE_URL) {
         options.baseUrl = process.env.OPENAI_BASE_URL
