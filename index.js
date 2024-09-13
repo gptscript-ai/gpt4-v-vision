@@ -43,8 +43,7 @@ async function main() {
     if (process.env.MODEL) {
         options.model = process.env.MODEL
     } else {
-        console.log("No model provided. Please provide a model.")
-        process.exit(1)
+        options.model = "gpt-4o"
     }
 
     if (process.env.DETAIL) {
